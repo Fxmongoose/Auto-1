@@ -3,6 +3,7 @@
 </style>
 <style>
 .visual:after{display:none}.visual{position:relative}.zoom-btn{position:absolute;left:12px;bottom:10px;border:3px solid #fff;background:linear-gradient(#ffe66b,#ffb52f);color:#5f3a00;padding:8px 13px;border-radius:999px;font:inherit;font-weight:1000;box-shadow:0 4px 0 #d98217;cursor:pointer}.learn-entry{width:100%;margin:5px 0 14px}.challenge-title{margin:8px 0;color:#24489b}.learn-card{text-align:center}.learn-brand{font-size:clamp(25px,6vw,38px);margin:9px 0 5px}.learn-actions{display:flex;justify-content:center;margin-bottom:5px}.zoom-modal{position:fixed;inset:0;background:#10203aee;z-index:1000;display:grid;place-items:center;padding:12px}.zoom-modal img{max-width:96vw;max-height:91dvh;object-fit:contain;background:white;border:6px solid white;border-radius:20px;box-shadow:0 15px 50px #0009}.zoom-close{position:fixed;right:14px;top:14px;z-index:1001;width:48px;height:48px;border:3px solid white;border-radius:50%;background:#ff5579;color:white;font-size:23px;font-weight:1000;cursor:pointer}.zoom-modal.hidden{display:none!important}
+.rotate-hint{display:none}
 @media (max-width:600px){
   html,body{height:100%;overflow:hidden}
   main{height:100dvh;width:100%;padding:5px 8px 6px;display:flex;flex-direction:column}
@@ -17,8 +18,40 @@
   .status{min-height:25px;font-size:17px;line-height:25px;margin:5px 0 0}
   .controls{margin-top:4px}.secondary,.primary{padding:8px 13px;font-size:14px}.mascot{font-size:34px;bottom:1vh}
 }
+@media (orientation:landscape) and (max-height:700px){
+  html,body{width:100%;height:100%;overflow:hidden}
+  body:before{font-size:36px;inset:1vh -5vw auto}body:after{bottom:2vh;height:72px}.road-lines{bottom:calc(2vh + 31px)}.scenery{display:none}
+  main{width:min(1180px,99%);height:100dvh;padding:4px 5px;display:flex;flex-direction:column}
+  .top{min-height:42px;height:42px;flex:0 0 42px}.brand{font-size:clamp(19px,3.4vw,29px);line-height:1}.pill{padding:6px 11px;font-size:12px}
+  .card{margin-top:3px;padding:7px 9px;border-width:4px;border-radius:22px;box-shadow:0 5px 0 #344d9b;overflow:hidden}
+  #game.card{height:calc(100dvh - 50px);display:grid;grid-template-columns:minmax(0,1.72fr) minmax(245px,.78fr);grid-template-rows:34px 10px minmax(0,1fr) 28px 42px;column-gap:13px;row-gap:5px}
+  #game .meta{grid-column:1/-1;grid-row:1;padding:5px 12px;font-size:13px;border-radius:12px}
+  #game .track{grid-column:1/-1;grid-row:2;height:10px;margin:0}
+  #game .visual{grid-column:1;grid-row:3/6;min-height:0;height:100%}
+  #game .answers{grid-column:2;grid-row:3;align-self:stretch;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:8px;margin:0}
+  #game .answer{min-height:0;height:100%;padding:6px;border-radius:15px;font-size:clamp(13px,2.1vw,18px);box-shadow:0 4px 0 #394aa8}
+  #game .status{grid-column:2;grid-row:4;min-height:0;height:28px;font-size:17px;line-height:28px;margin:0;white-space:nowrap}
+  #game .controls{grid-column:2;grid-row:5;margin:0;align-self:end}.controls .secondary,.controls .primary{padding:7px 12px;font-size:13px}
+  .visual{border:8px solid #fff;border-radius:27px;background:linear-gradient(145deg,#effbff,#fff8e9);outline:4px solid #ffd43b;box-shadow:0 0 0 8px #35bdf5,0 8px 0 8px #3c63d8,0 13px 24px #173b7a66,inset 0 0 24px #71d7ff55;isolation:isolate}
+  .visual:before{content:"🏁";display:block;position:absolute;z-index:3;inset:0;pointer-events:none;border-radius:18px;background:linear-gradient(90deg,#ff5b79 0 18%,#ffc928 18% 36%,#43d989 36% 54%,#4bb7ff 54% 72%,#a76cff 72% 100%) top/100% 8px no-repeat,linear-gradient(90deg,#4bb7ff 0 20%,#a76cff 20% 40%,#ff5b79 40% 60%,#ffc928 60% 80%,#43d989 80% 100%) bottom/100% 8px no-repeat;box-shadow:inset 0 0 0 3px #ffffffcc;text-align:right;font-size:21px;line-height:37px;padding-right:9px}
+  .visual img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;padding:13px 10px 11px}
+  .zoom-btn{z-index:5;left:14px;bottom:14px;padding:6px 11px;font-size:12px;box-shadow:0 4px 0 #d98217}
+  #learn.card{height:calc(100dvh - 50px);display:grid;grid-template-columns:minmax(0,1.72fr) minmax(235px,.78fr);grid-template-rows:35px 1fr auto 47px;column-gap:15px;row-gap:6px}
+  #learn .meta{grid-column:1/-1;grid-row:1;padding:5px 12px;font-size:13px}
+  #learn .learn-visual{grid-column:1;grid-row:2/5;height:100%;min-height:0}
+  #learn .learn-brand{grid-column:2;grid-row:2;align-self:end;font-size:clamp(24px,4vw,38px);margin:0 0 9px}
+  #learn .learn-actions{grid-column:2;grid-row:3;margin:0;align-self:center}#learn .learn-actions .primary{padding:9px 12px;font-size:13px}
+  #learn .controls{grid-column:2;grid-row:4;margin:0;gap:5px;align-self:end}#learn .controls button{padding:7px 8px;font-size:11px}
+  #menu.card{height:calc(100dvh - 50px);padding:8px 18px}#menu h2{font-size:19px;margin:0 0 3px}#menu .muted{font-size:12px;margin-bottom:5px}.learn-entry{padding:8px 13px;margin:2px 0 5px}.challenge-title{font-size:15px;margin:3px 0}.levels{grid-template-columns:repeat(3,1fr);gap:8px}.level{min-height:62px;border-radius:16px;box-shadow:0 4px 0 #2857b8}.level:before{display:inline;font-size:20px}.level strong{display:inline;font-size:17px;margin-left:5px}.level small{font-size:10px;margin-top:3px}#progressText{display:inline-block;margin:7px 10px 0 0!important}#resetBtn{padding:6px 10px;font-size:11px}
+  .mascot{font-size:31px;bottom:1vh}.zoom-modal img{max-width:94vw;max-height:92dvh}
+}
+@media (orientation:portrait) and (max-width:900px){
+  .rotate-hint{position:fixed;inset:0;z-index:5000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;text-align:center;padding:28px;background:linear-gradient(155deg,#35bdf5,#6b69ef 55%,#a75ce8);color:white;font-size:19px;text-shadow:0 2px #3153a4}
+  .rotate-hint strong{font-size:clamp(25px,7vw,38px)}.rotate-hint span{font-weight:800}.rotate-phone{font-size:82px;animation:turnPhone 1.8s ease-in-out infinite}
+  @keyframes turnPhone{0%,20%{transform:rotate(0)}70%,100%{transform:rotate(90deg)}}
+}
 </style>
-</head><body><div class="scenery" aria-hidden="true"><span>🌳</span><span>🏠</span><span>🌲</span><span>⛽</span><span>🌳</span></div><div class="road-lines" aria-hidden="true"></div><div class="mascot" aria-hidden="true">🏎️</div><main><header class="top"><div class="brand">🚗 AUTO <span>LOGO</span> CHALLENGE</div><button id="soundBtn" class="pill">🔊 Sunet</button></header>
+</head><body><div class="rotate-hint"><div class="rotate-phone">📱</div><strong>Rotește telefonul pe orizontală</strong><span>Așa fotografiile vor fi mari și clare.</span></div><div class="scenery" aria-hidden="true"><span>🌳</span><span>🏠</span><span>🌲</span><span>⛽</span><span>🌳</span></div><div class="road-lines" aria-hidden="true"></div><div class="mascot" aria-hidden="true">🏎️</div><main><header class="top"><div class="brand">🚗 AUTO <span>LOGO</span> CHALLENGE</div><button id="soundBtn" class="pill">🔊 Sunet</button></header>
 <section id="login" class="card"><div class="hero-car" aria-hidden="true">🚙</div><h1>Salut, campionule! 🏁</h1><p class="muted">Pornește motorul și descoperă mărcile auto!</p><form id="loginForm"><input id="password" type="password" placeholder="🔑 Parola secretă" autocomplete="off" required><button class="primary">🏎️ Pornește cursa!</button></form><p id="loginError" style="color:#e43d62;font-weight:900"></p></section>
 <section id="menu" class="card hidden"><h2>🏁 Alege următoarea cursă</h2><p class="muted">Învață mai întâi mărcile, apoi încearcă provocarea!</p><button id="learnBtn" class="primary learn-entry">📚 Învață siglele și pronunțarea</button><h3 class="challenge-title">🏁 Challenge</h3><div id="levels" class="levels"></div><p id="progressText" class="muted" style="margin-top:20px"></p><button id="resetBtn" class="secondary">🔄 Resetează progresul</button></section>
 <section id="game" class="card hidden"><div class="meta"><span id="levelName"></span><span id="score"></span><span id="counter"></span></div><div class="track"><div id="fill" class="fill"></div></div><div id="visual" class="visual"></div><div id="answers" class="answers"></div><div id="status" class="status"></div><div class="controls"><button id="backBtn" class="secondary">Meniu</button><button id="nextBtn" class="primary hidden">Următoarea</button></div></section>
